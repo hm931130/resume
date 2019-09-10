@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/drawable_search_hosbg"
+    android:gravity="center"
+    android:paddingLeft="@dimen/x30"
+    android:paddingTop="@dimen/y14"
+    android:paddingRight="@dimen/x30"
+    android:paddingBottom="@dimen/y14"
+    android:textColor="@color/text_gray"
+    android:textSize="@dimen/sp_12"></TextView><!--android:paddingLeft="@dimen/x50"--><!--android:paddingRight="@dimen/x50"-->

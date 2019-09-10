@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.talent.viewControl.SearchResultCtrl" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+
+            <TextView
+                android:id="@+id/cancelTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{viewCtrl::cancleClick}"
+                android:text="取消"
+                android:textColor="@color/text_dark"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/searchLL"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@id/cancelTv"
+                android:background="@drawable/drawable_search_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/searchIv"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x25"
+                    android:background="@drawable/nav_search_large" />
+
+
+                <ImageView
+                    android:id="@+id/deleteIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x25"
+                    android:background="@drawable/icon_delete_large" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/keyListView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:layout_marginRight="@dimen/x20"
+                    android:layout_toLeftOf="@id/deleteIv"
+                    android:layout_toRightOf="@id/searchIv" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <com.prompt.resume.views.DropDownMenu
+            android:id="@+id/dropDownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/y10"
+            app:dddividerColor="@color/transparent"
+            app:ddmaskColor="@color/mask_color"
+            app:ddmenuBackgroundColor="@color/white"
+            app:ddmenuMenuHeightPercent="0.6"
+            app:ddmenuSelectedIcon="@drawable/arrow_top_selected_large"
+            app:ddmenuTextSize="14sp"
+            app:ddmenuUnselectedIcon="@drawable/arrow_down_unselected_large"
+            app:ddtextSelectedColor="@color/colorAccent"
+            app:ddtextUnselectedColor="@color/text_gray"
+            app:ddunderlineColor="@color/transparent" />
+
+    </LinearLayout>
+
+
+</layout>

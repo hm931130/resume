@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.user.viewControl.RegisPhoneCtrl" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/page_vertical_margin"
+            android:layout_marginRight="@dimen/page_vertical_margin"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/y250">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入手机号"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/sp_24" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x5"
+                    android:text="首次登陆自动注册"
+                    android:textColor="@color/color_subtitle"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="密码登陆"
+                    android:onClick="@{viewCtrl::codeLogin}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_14" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/drawable_edittext_normal"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10">
+
+                <TextView
+                    android:id="@+id/areaTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="+86"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:id="@+id/diverTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/areaTv"
+                    android:text="|"
+                    android:textColor="@color/color_divider"
+                    android:textSize="@dimen/sp_16" />
+
+                <EditText
+                    android:id="@+id/phoneEt"
+                    style="@style/EditText.Null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@id/deleteIv"
+                    android:layout_toRightOf="@id/diverTv"
+                    android:hint="请输入手机号"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:text="@={viewCtrl.phoneVM.phoneNum}"
+                    android:textColorHint="@color/color_subtitle" />
+
+                <ImageView
+                    android:id="@+id/deleteIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="@{viewCtrl.phoneVM.clearBtnVis?View.VISIBLE:View.GONE}"
+                    android:onClick="@{viewCtrl::clearNum}"
+                    android:background="@drawable/icon_delete_large" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                style="@style/primary_button"
+                android:layout_marginTop="50dp"
+                android:enabled="@{viewCtrl.phoneVM.nextEnable}"
+                android:onClick="@{viewCtrl::nextStep}"
+                android:text="下一步"
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/login_logo_large" />
+
+    </LinearLayout>
+
+
+</layout>

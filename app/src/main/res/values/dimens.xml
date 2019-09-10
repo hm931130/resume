@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app默认设置值 -->
+    <dimen name="app_bar_height">@dimen/y88</dimen>
+    <dimen name="app_bar_title_size">18sp</dimen>
+    <dimen name="app_bar_left_size">14sp</dimen>
+    <dimen name="app_bar_right_size">14sp</dimen>
+
+    <color name="app_bar_title_color">@color/color_white</color>
+    <color name="app_bar_left_color">@color/color_white</color>
+    <color name="app_bar_right_color">@color/color_white</color>
+
+    <color name="app_bar_divider_color">@color/hint_grey</color>
+    <dimen name="app_bar_divider_height">@dimen/y0</dimen>
+
+
+    <dimen name="page_vertical_margin">@dimen/x30</dimen>
+
+
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_28">28sp</dimen>
+
+
+    <dimen name="design_bottom_navigation_active_text_size">12sp</dimen>
+    <dimen name="design_bottom_navigation_text_size">10sp</dimen>
+    <dimen name="design_bottom_navigation_margin">10dp</dimen>
+</resources>

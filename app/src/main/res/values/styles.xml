@@ -1,0 +1,248 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item> <!-- 半透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <!-- 基础样式 -->
+    <style name="BasicTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_white</item>
+    </style>
+    <!-- TextView Style  -->
+    <style name="BasicTheme.TextView" parent="@style/BasicTheme">
+        <item name="android:paddingTop">@dimen/x20</item>
+        <item name="android:paddingBottom">@dimen/x20</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- TextView Black Style  -->
+    <style name="BasicTheme.TextView.Black" parent="@style/BasicTheme.TextView">
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
+
+    <!--EditText Style-->
+    <style name="BasicTheme.EditText" parent="@style/BasicTheme.TextView.Black">
+        <item name="android:background">@drawable/drawable_edit_bg</item>
+        <item name="android:textColorHint">@color/color_edit_hint</item>
+    </style>
+
+    <!-- 带 Padding 的 EditText Style -->
+    <style name="BasicTheme.EditText.Padding" parent="BasicTheme.EditText">
+        <item name="android:paddingLeft">@dimen/x20</item>
+        <item name="android:paddingRight">@dimen/x20</item>
+        <item name="android:paddingTop">@dimen/x20</item>
+        <item name="android:paddingBottom">@dimen/x20</item>
+    </style>
+
+    <!-- 带 Margin 的 EditText Style -->
+    <style name="BasicTheme.EditText.Margin" parent="BasicTheme.EditText">
+        <item name="android:layout_marginLeft">@dimen/x30</item>
+        <item name="android:layout_marginRight">@dimen/x30</item>
+    </style>
+    <!-- 空白背景输入框 -->
+    <style name="EditText.Null" parent="@style/BasicTheme.EditText.Padding">
+        <item name="android:background">@null</item>
+    </style>
+    <!-- 左右文字 -->
+    <style name="CoupleLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/x20</item>
+        <item name="android:paddingBottom">@dimen/x20</item>
+        <item name="android:paddingLeft">@dimen/x30</item>
+        <item name="android:paddingRight">@dimen/x30</item>
+    </style>
+    <!-- 左右文字 - 带下划线 -->
+    <!--<style name="CoupleLayout.Line" parent="CoupleLayout">-->
+    <!--<item name="android:background">@drawable/underline</item>-->
+    <!--</style>-->
+
+    <!-- 左右文字 - 带左间距下划线 -->
+    <!--<style name="CoupleLayout.LineLeft" parent="CoupleLayout">-->
+    <!--<item name="android:background">@drawable/underline_left</item>-->
+    <!--</style>-->
+
+    <!-- 左右文字 - 带左右间距下划线 -->
+    <!--<style name="CoupleLayout.LineBoth" parent="CoupleLayout">-->
+    <!--<item name="android:background">@drawable/underline_both</item>-->
+    <!--</style>-->
+
+    <!-- 左右文字 padding值不一样 -->
+    <style name="CoupleLayout.Top">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/x20</item>
+        <item name="android:paddingBottom">@dimen/x20</item>
+        <item name="android:paddingLeft">@dimen/x0</item>
+        <item name="android:paddingRight">@dimen/x0</item>
+    </style>
+
+    <!-- 左右文字 padding值不一样 -->
+    <style name="CoupleLayout.Other">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/x0</item>
+        <item name="android:paddingBottom">@dimen/x20</item>
+        <item name="android:paddingLeft">@dimen/x0</item>
+        <item name="android:paddingRight">@dimen/x0</item>
+    </style>
+
+
+    <!-- 主色调按钮 Style -->
+    <style name="primary_button">
+        <item name="android:background">@drawable/drawable_primary_bg</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginBottom">@dimen/x20</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/x18</item>
+        <item name="android:textColor">@color/primary_button_textcolor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- 自定义dialog的样式 -->
+    <style name="CustomDialog" parent="android:Theme.Dialog">
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <declare-styleable name="OverScrollLayout">
+        <attr name="dampingFactor" format="float" />
+        <attr name="dampingDirection">
+            <flag name="left" value="0x0001" />
+            <flag name="top" value="0x0010" />
+            <flag name="right" value="0x0100" />
+            <flag name="bottom" value="0x1000" />
+        </attr>
+    </declare-styleable>
+
+    <!--<style name="timeButtonStyle">-->
+    <!--<item name="android:textSize">@dimen/sp12</item>-->
+    <!--<item name="android:textColor">@color/colorPrimary</item>-->
+    <!--<item name="android:gravity">center</item>-->
+    <!--<item name="android:layout_gravity">center_vertical</item>-->
+    <!--<item name="android:layout_marginLeft">@dimen/x20</item>-->
+    <!--</style>-->
+
+    <!-- 提示文本 Style -->
+    <!--<style name="BasicTheme.Tips" parent="@style/BasicTheme">-->
+    <!--<item name="android:background">@color/colorGrey</item>-->
+    <!--<item name="android:textColor">@color/text_grey</item>-->
+    <!--<item name="android:textSize">12sp</item>-->
+    <!--</style>-->
+
+    <!--<style name="AnimUp" parent="@android:style/Animation">-->
+    <!--<item name="android:windowEnterAnimation">@anim/push_bottom_in</item>-->
+    <!--<item name="android:windowExitAnimation">@anim/push_bottom_out</item>-->
+    <!--</style>-->
+
+    <!-- Arrow TextView Style -->
+    <!--<style name="BasicTheme.TextView.Arrow" parent="@style/BasicTheme.TextView">-->
+    <!--<item name="android:drawableEnd">@drawable/icon_arrow_right</item>-->
+    <!--<item name="android:drawableRight">@drawable/icon_arrow_right</item>-->
+    <!--<item name="android:drawablePadding">@dimen/x20</item>-->
+    <!--&lt;!&ndash;<item name="android:background">@drawable/item_selector</item>&ndash;&gt;-->
+    <!--<item name="android:background">@color/color_white</item>-->
+    <!--</style>-->
+
+    <!-- 弹出框动画 -->
+    <!--<style name="PopupAnimation" parent="android:Animation">-->
+    <!--<item name="android:windowEnterAnimation">@anim/push_bottom_in</item>-->
+    <!--<item name="android:windowExitAnimation">@anim/push_bottom_out</item>-->
+    <!--</style>-->
+
+    <declare-styleable name="AutoRatioImageView">
+
+        <!-- -ratio 高/宽 -->
+        <attr name="ratio" format="float" />
+        <attr name="prefer" format="integer" />
+    </declare-styleable>
+
+
+    <!-- CustomCheckBox vip theme -->
+    <!--<style name="CustomVipTheme" parent="@android:style/Widget.CompoundButton.CheckBox">-->
+    <!--<item name="android:button">@drawable/vip_checkbox_style</item>-->
+    <!--</style>-->
+
+    <!-- CustomCheckBox theme -->
+    <!--<style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">-->
+    <!--<item name="android:button">@drawable/checkbox_style</item>-->
+    <!--</style>-->
+    <!--全屏主题-->
+    <!--<style name="StartTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--<item name="android:windowIsTranslucent">true</item>  &lt;!&ndash; 透明背景 &ndash;&gt;-->
+    <!--<item name="android:windowNoTitle">true</item>-->
+    <!--<item name="android:windowContentOverlay">@null</item>-->
+    <!--<item name="android:windowBackground">@drawable/spash_bg</item>-->
+    <!--<item name="android:windowFullscreen">true</item>-->
+    <!--</style>-->
+    <!--全屏主题-->
+    <style name="NewFeatureTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>  <!-- 透明背景 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Fullscreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="AppTheme.Fullscreen.Translucent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+
+    <style name="TabLayoutTextSize">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <!--设置Tablayout字体加粗-->
+    <style name="TabLayoutTextStyleBold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TabLayoutTextStyleNormal">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomTheme" parent="DefaultCityPickerTheme">
+        <!--<item name="cpCancelTextColor">@color/color_green</item>-->
+        <!--<item name="cpSearchCursorDrawable">@color/color_green</item>-->
+        <!--<item name="cpIndexBarNormalTextColor">@color/color_green</item>-->
+        <!--<item name="cpIndexBarSelectedTextColor">@color/color_green</item>-->
+        <!--<item name="cpSectionHeight">@dimen/custom_section_height</item>-->
+        <!--<item name="cpOverlayBackground">@color/color_green</item>-->
+    </style>
+
+
+    <style name="CustomAnim">
+        <item name="android:windowEnterAnimation">@anim/custom_push_down_in</item>
+        <item name="android:windowExitAnimation">@anim/custom_push_up_out</item>
+    </style>
+</resources>

@@ -1,0 +1,203 @@
+apply plugin: 'com.android.application'
+def dbflow_version = "4.2.1"
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    // 关闭PNG合法性检查的
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    // 开启dataBinding
+    dataBinding.enabled = true
+    // 移除lint检查的error
+    lintOptions.abortOnError = false
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // 设置支持的 SO 库构架
+            abiFilters 'armeabi-v7a'//, 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+    //可选，lint报错后不不退出
+    lintOptions {
+        abortOnError false
+    }
+    //必填
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+    dexOptions {
+        // 增加java堆内存大小
+        javaMaxHeapSize "6g"
+        // 对于dex 的--multi-dex 选项设置与预编译的library工程有冲突,因此如果你的应用中包含引用的lirary工程,需要将预编译设置为false
+        preDexLibraries = false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    signingConfigs {
+        debug {
+            // No debug config
+            // 签名store文件路径
+            storeFile file(rootProject.ext.android.storeFile)
+            // 签名store文件的密码
+            storePassword rootProject.ext.android.storePassword
+            // 别名
+            keyAlias rootProject.ext.android.keyAlias
+            // 别名的密码
+            keyPassword rootProject.ext.android.keyPassword
+        }
+        // 正式版
+        release {
+            // 签名store文件路径
+            storeFile file(rootProject.ext.android.storeFile)
+            // 签名store文件的密码
+            storePassword rootProject.ext.android.storePassword
+            // 别名
+            keyAlias rootProject.ext.android.keyAlias
+            // 别名的密码
+            keyPassword rootProject.ext.android.keyPassword
+        }
+    }
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.debug
+
+            // 版本名后缀
+//            versionNameSuffix "-debug"
+            // 是否混淆
+            minifyEnabled false
+            // zipAlign优化
+            zipAlignEnabled false
+            // 是否可以debug
+            debuggable true
+
+            jniDebuggable true
+            // 移除无用的resource文件
+            shrinkResources false
+        }
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            signingConfig signingConfigs.release
+
+            // 是否混淆
+            minifyEnabled true
+            // zipAlign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            // 混淆配置文件的位置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "mode"
+
+
+    // 多渠道打包
+    productFlavors {
+        DEV {
+            buildConfigField 'String', 'API_URL', "\"${API_URL_DEV}\""
+            dimension "mode"
+        }
+        PROD {
+            buildConfigField 'String', 'API_URL', "\"${API_URL_PROD}\""
+            dimension "mode"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //fragmentation
+    implementation 'me.yokeyword:fragmentation:1.3.6'
+    //工具类
+    implementation 'com.blankj:utilcode:1.23.7'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+
+    //baseRecyclerView适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+
+    //rxjava
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.5'
+
+
+    // URL路由
+    implementation rootProject.ext.dependencies["activityRouter"]
+
+    // android权限管理 https://github.com/yanzhenjie/AndPermission
+
+    //compile rootProject.ext.dependencies["permission"]
+    annotationProcessor rootProject.ext.dependencies["activityRouter-compiler"]
+
+    //集成eventBus
+    implementation rootProject.ext.dependencies["eventBus"]
+
+    // 刷新控件 https://github.com/Aspsine/SwipeToLoadLayout
+    implementation 'com.github.Aspsine:SwipeToLoadLayout:1.0.4'
+
+    //轮播图
+    implementation 'cn.bingoogolapple:bga-banner:2.2.6@aar'
+    implementation 'com.noober.background:core:1.4.4'
+
+    // DatePick 效果的弹出选择框
+    implementation rootProject.ext.dependencies["pickerView"]
+
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    // sql-cipher database encyrption (optional)
+    implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
+    implementation project(path: ':citypicker')
+
+    implementation 'com.amap.api:location:latest.integration'
+
+
+}

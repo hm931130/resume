@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">欧普</string>
+
+
+    <string name="app_exit">再按一次，退出程序</string>
+    <string name="app_network_error">网络连接错误，请查看网络是否已连接!</string>
+    <string name="app_network_socket_timeout">网络连接超时!</string>
+    <string name="dialog_file_too_big">文件过大</string>
+    <string name="page_loading">正在加载...</string>
+    <string name="placeholder_empty">暂无数据~</string>
+    <string name="str_sms_code">已发送至 %1$s</string>
+
+    <!--工作经验-->
+    <string name="str_work_experience">%1$s年工作经验</string>
+    <!--年龄-->
+    <string name="str_age">%1$d岁</string>
+
+</resources>

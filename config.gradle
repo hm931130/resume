@@ -1,0 +1,49 @@
+ext {
+    // rootProject.ext.isDebug.toBoolean()
+    plugins = [
+            application: 'com.android.application',
+            library    : 'com.android.library',
+            maven      : 'com.github.dcendents.android-maven',
+            bintray    : 'com.jfrog.bintray'
+    ]
+    //com.dsdata.test
+    isDebug = true
+    android = [
+
+            applicationId    : "com.prompt.resume",
+
+            // 签名store
+            storeFile        : "../resume.jks",
+            storePassword    : "111111",
+            keyAlias         : "resume",
+            keyPassword      : "111111",
+
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 19,
+            targetSdkVersion : 23,
+
+            versionCode      : 1,
+            versionName      : '1.0.0',
+
+            supportSdk       : '28.0.0',
+
+            umengKey         : "5cd8d5a0570df3d8d3000c0d",
+            mapGDKey         : "eaf6a137fdf41c587725bae63d24d59d",
+            getuiAppId       : "dYYvpby4126W6dcUXmLQz7",
+            getuiAppKey      : "ctfMwXnCKl8fFg2VceKNbA",
+            getuiAppSecret   : "adpIzkbuHQADvym5HrInz",
+            buglyAppId       : "124876f7fe",
+            buglyAppKey      : "dd2d7cfa-9ba4-45ef-a184-a7d4a6679c00",
+
+    ]
+    dependencies = [
+            "cardview-v7"            : "com.android.support:cardview-v7:${android["supportSdk"]}",
+            // URL路由
+            "activityRouter"         : "com.github.mzule.activityrouter:activityrouter:1.2.1",
+            "activityRouter-compiler": "com.github.mzule.activityrouter:compiler:1.1.7",
+            "eventBus"               : "org.greenrobot:eventbus:3.0.0",
+            // DatePick 效果的弹出选择框
+            "pickerView"             : "com.bigkoo:pickerview:2.0.8",
+    ]
+}

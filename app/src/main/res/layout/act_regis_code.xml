@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.prompt.resume.utils.StringFormat" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.user.viewControl.RegisCodeCtrl" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/page_vertical_margin"
+            android:layout_marginRight="@dimen/page_vertical_margin"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/y250">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入验证码"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/sp_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{@string/str_sms_code(StringFormat.phoneHideFormat(viewCtrl.codeVM.mobile))}"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/sp_14" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10">
+
+                <EditText
+                    android:id="@+id/codeEdit"
+                    style="@style/EditText.Null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:singleLine="true" />
+
+
+                <LinearLayout
+                    android:id="@+id/codeLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/drawable_horizontal_divider"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/code1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+
+                    <TextView
+                        android:id="@+id/code2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+
+                    <TextView
+                        android:id="@+id/code3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+
+                    <TextView
+                        android:id="@+id/code4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+
+                    <TextView
+                        android:id="@+id/code5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+
+                    <TextView
+                        android:id="@+id/code6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_edittext_normal"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/y30"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_28" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/timeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/y30"
+                android:onClick="@{viewCtrl::timeClick}"
+                android:text="重新发送"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+
+
+            <TextView
+                style="@style/primary_button"
+                android:layout_marginTop="50dp"
+                android:enabled="@{viewCtrl.codeVM.nextStepEnable}"
+                android:onClick="@{viewCtrl::nextStep}"
+                android:text="下一步" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:text="点击下一步表示同意普欧协议"
+            android:textColor="@color/color_subtitle"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+
+
+</layout>

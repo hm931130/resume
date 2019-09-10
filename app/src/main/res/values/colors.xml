@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#5868d9</color>
+
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_black_grey">#080808</color>
+    <color name="hint_grey">#CCCCCC</color>
+    <!--text-->
+    <color name="text_light">#999999</color>
+    <color name="text_dark">#333333</color>
+    <color name="text_gray">#666666</color>
+
+    <!-- 占位图文字颜色 -->
+    <color name="placeholder_text_color">#666666</color>
+    <!-- 透明灰色背景 -->
+    <color name="transparentGrey">#A0000000</color>
+
+    <!--透明色-->
+    <color name="transparent">#00000000</color>
+
+    <!--普通按钮颜色-->
+    <!--unenable-->
+    <color name="color_button_unenable">#818EE1</color>
+
+    <!--文本编辑框-->
+    <color name="color_edit_bottom_normal">#E6EBF0</color>
+    <color name="color_edit_hint">#9dA3AF</color>
+    <color name="color_subtitle">#99A1AD</color>
+
+    <color name="color_divider">#E1E3EA</color>
+
+    <color name="no_data_bg">#F3F4F9</color>
+    <color name="search_shape_bg">#F0F0F4</color>
+
+    <color name="search_page_color">#F8F9FA</color>
+
+    <!--dropMenu-->
+    <color name="white">#ffffff</color>
+    <color name="gray">#cccccc</color>
+
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="check_bg">#f2f2f2</color>
+    <color name="un_press_color">#9C27B0</color>
+</resources>

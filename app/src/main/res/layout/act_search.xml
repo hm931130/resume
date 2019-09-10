@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.talent.viewControl.SearchCtrl" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+
+            <TextView
+                android:id="@+id/cancelTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{viewCtrl::cancleClick}"
+                android:text="取消"
+                android:textColor="@color/text_dark"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/searchLL"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@id/cancelTv"
+                android:background="@drawable/drawable_search_bg"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x25"
+                    android:background="@drawable/nav_search_large" />
+
+                <EditText
+                    android:id="@+id/keyEt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:background="@null"
+                    android:hint="@{viewCtrl.searchVM.hintTips}"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:text="@={viewCtrl.searchVM.keyStr}"
+                    android:textColor="@color/color_subtitle"
+                    android:textColorHint="@color/color_subtitle"
+                    android:textSize="@dimen/sp_14" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:visibility="@{viewCtrl.searchVM.searchHisVis}">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="搜索历史"
+                        android:textColor="@color/color_subtitle"
+                        android:textSize="@dimen/sp_12" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/icon_remove_large"
+                        android:onClick="@{viewCtrl::removeAllClick}" />
+                </RelativeLayout>
+
+
+                <com.prompt.resume.views.flowlayout.TagFlowLayout
+                    android:id="@+id/flowLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:max_select="-1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/search_page_color"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="115dp"
+                android:visibility="@{viewCtrl.searchVM.tiptitleVis}">
+
+                <ImageView
+                    android:layout_width="165dp"
+                    android:layout_height="165dp"
+                    android:background="@drawable/seach_add_large" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:text="@{viewCtrl.searchVM.titleTips}"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_white"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:visibility="@{viewCtrl.searchVM.categoryVis}">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp">
+
+                    <ImageView
+                        android:id="@+id/searchAllIv"
+                        android:layout_width="20dp"
+                        android:layout_height="17.5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/search_all_large" />
+
+                    <TextView
+                        android:id="@+id/allHdTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/searchAllIv"
+                        android:singleLine="true"
+                        android:text="全文"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/allHdTv"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:text="@{viewCtrl.searchVM.keyStr}"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:background="#E3E8F1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp">
+
+                    <ImageView
+                        android:id="@+id/searchPostIv"
+                        android:layout_width="20dp"
+                        android:layout_height="17.5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/search_post_large" />
+ 
+                    <TextView
+                        android:id="@+id/postHdTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/searchPostIv"
+                        android:singleLine="true"
+                        android:text="职位"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/postHdTv"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:text="@{viewCtrl.searchVM.keyStr}"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:background="#E3E8F1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp">
+
+                    <ImageView
+                        android:id="@+id/searchCompanyIv"
+                        android:layout_width="20dp"
+                        android:layout_height="17.5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/search_company_large" />
+
+                    <TextView
+                        android:id="@+id/companyHdTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@id/searchCompanyIv"
+                        android:singleLine="true"
+                        android:text="任职公司"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/companyHdTv"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:text="@{viewCtrl.searchVM.keyStr}"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:background="#E3E8F1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp">
+
+
+                    <ImageView
+                        android:id="@+id/searchSchoolIv"
+                        android:layout_width="20dp"
+                        android:layout_height="17.5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/search_school_large" />
+
+                    <TextView
+                        android:id="@+id/schoolHdTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@id/searchSchoolIv"
+                        android:singleLine="true"
+                        android:text="毕业院校"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/sp_16" />
+
+
+                    <TextView
+                        android:id="@+id/schoolTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/schoolHdTv"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:text="@{viewCtrl.searchVM.keyStr}"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:background="#E3E8F1" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</layout>

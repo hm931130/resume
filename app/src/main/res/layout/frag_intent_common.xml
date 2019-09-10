@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="com.prompt.resume.utils.StringFormat" />
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.talent.viewControl.CommonIntentCtrl" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/nodataLL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/no_data_bg"
+            android:orientation="vertical"
+            android:visibility="@{viewCtrl.intentionVM.nodataShow}">
+
+            <ImageView
+                android:layout_width="165dp"
+                android:layout_height="165dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/data_no_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="11dp"
+                android:text="暂无数据"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="快去搜索您想要的人才并向Ta发起联系吧"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                style="@style/primary_button"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/x50"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="@dimen/x50"
+                android:text="搜索人才"
+                android:onClick="@{viewCtrl::toSearchClick}"
+                android:textSize="@dimen/sp_16" />
+
+        </LinearLayout>
+
+
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swiplayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:listener="@{viewCtrl.listener}">
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/swipe_target"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@null"-->
+                <!--android:clipToPadding="@{viewCtrl.viewModel.clipToPadding}"-->
+                <!--android:overScrollMode="never"-->
+                <!--android:paddingTop="@{viewCtrl.viewModel.paddingTop}"-->
+                <!--app:addItemDecoration="@{viewCtrl.viewModel.type}"-->
+                <!--app:itemView="@{viewCtrl.viewModel.itemView}"-->
+                <!--app:items="@{viewCtrl.viewModel.items}"-->
+                <!--app:layoutManager="@{LayoutManagers.linear()}"-->
+                <!--/>-->
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+    </FrameLayout>
+
+
+</layout>

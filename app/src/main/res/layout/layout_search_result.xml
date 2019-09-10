@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.talent.viewControl.SearchResultCtrl" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.prompt.resume.views.PlaceholderLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:placeholderListener="@{viewCtrl.placeholderListener}"
+            app:placeholderState="@{viewCtrl.placeholderState}" />
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swiplayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:listener="@{viewCtrl.listener}">
+
+            <!--app:itemView="@{viewCtrl.viewModel.itemView}"-->
+            <!--app:items="@{viewCtrl.viewModel.items}"-->
+            <!--app:layoutManager="@{LayoutManagers.linear()}"-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/swipe_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clipToPadding="@{viewCtrl.viewModel.clipToPadding}"
+                android:overScrollMode="never"
+                android:paddingTop="@{viewCtrl.viewModel.paddingTop}"
+                app:addItemDecoration="@{viewCtrl.viewModel.type}" />
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+    </LinearLayout>
+
+</layout>

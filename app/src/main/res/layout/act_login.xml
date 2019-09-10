@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewCtrl"
+            type="com.prompt.resume.model.user.viewControl.LoginCtrl" />
+
+    </data>
+
+
+    <com.prompt.resume.views.appbar.ToolBar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        app:barBackground="@drawable/drawable_statusbar_bg"
+        app:titleColor="@color/color_black"
+        app:titleText="密码登录">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/page_vertical_margin"
+            android:paddingRight="@dimen/page_vertical_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/login_logo_large" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="45dp"
+                android:background="@{viewCtrl.vm.phoneFocusable?@drawable/drawable_edittext_hightlight : @drawable/drawable_edittext_normal}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/login_tell_large" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="+86"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:text="|"
+                    android:textColor="@color/color_divider" />
+
+                <EditText
+                    android:id="@+id/phoneEt"
+                    style="@style/EditText.Null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="请输入手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:text="@={viewCtrl.vm.phoneNum}"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/sp_16" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@{viewCtrl.vm.pwdFocusable?@drawable/drawable_edittext_hightlight:@drawable/drawable_edittext_normal}">
+
+                <ImageView
+                    android:id="@+id/pwdIv"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/login_possword_large" />
+
+                <TextView
+                    android:id="@+id/pwdLineTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/pwdIv"
+                    android:text="|"
+                    android:textColor="@color/color_divider" />
+
+
+                <EditText
+                    android:id="@+id/pwdEt"
+                    style="@style/EditText.Null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/eyeIv"
+                    android:layout_toRightOf="@id/pwdLineTv"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:text="@={viewCtrl.vm.pwdNum}"
+                    android:textColor="@color/text_dark" />
+
+                <ImageView
+                    android:id="@+id/eyeIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x10"
+                    android:background="@{viewCtrl.vm.eyeOpen?@drawable/icon_eyeclaose_large:@drawable/icon_eyeopen_large}"
+                    android:onClick="@{viewCtrl::eyeClick}"
+                    android:paddingLeft="@dimen/x20"
+                    android:paddingTop="@dimen/y10"
+                    android:paddingRight="@dimen/x20"
+                    android:paddingBottom="@dimen/y10"
+                    android:visibility="@{viewCtrl.vm.eyeVis}" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{viewCtrl::invitaLogin}"
+                    android:text="验证码登录"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{viewCtrl::forgetPwd}"
+                    android:text="忘记密码？"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_14" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/primary_button"
+                android:layout_marginTop="50dp"
+                android:enabled="@{viewCtrl.vm.loginEnable}"
+                android:onClick="@{viewCtrl::loginClick}"
+                android:text="登录" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:text="点击登录表示同意普欧协议"
+            android:textColor="@color/color_subtitle"
+            android:textSize="@dimen/sp_14" />
+
+    </com.prompt.resume.views.appbar.ToolBar>
+</layout>
